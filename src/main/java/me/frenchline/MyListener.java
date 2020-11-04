@@ -14,16 +14,14 @@ public class MyListener implements ServletContextListener {
     /* 컨텍스트가 초기화 될 때 */
     @Override
     public void contextInitialized(ServletContextEvent sce) {
-        System.out.println("ContextInitialized");
-        System.out.println(getClass().getMethods());
+        System.out.println("Context Initialized");
         sce.getServletContext().setAttribute("name", "frenchline");
-
     }
 
     /* 컨텍스트가 종료 될 때 */
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
-        System.out.println("ContextDestroyed");
+        System.out.println("Context Destroyed");
     }
 }
 
