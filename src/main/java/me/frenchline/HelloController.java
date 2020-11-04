@@ -28,6 +28,6 @@ public class HelloController {
 
     @GetMapping("/sample")
     public String sample() {
-        return "/WEB-INF/sample.jsp"; //ModelAndView [view="/WEB-INF/sample.jsp"; model={}]
+        return "sample";
     }
 }

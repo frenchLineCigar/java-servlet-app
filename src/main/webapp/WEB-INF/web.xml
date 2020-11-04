@@ -11,10 +11,12 @@
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <!-- 이때 파라미터를 등록할 수 있다 -->
         <init-param>
+            <!-- contextClass : ConfigurableWebApplicationContext 타입의 ApplicationContext를 지정, XmlWebApplicationContext(default) -->
             <param-name>contextClass</param-name>
             <param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
         </init-param>
         <init-param>
+            <!-- contextConfigLocation : DispatcherServlet이 사용할 설정 파일 위치 -->
             <param-name>contextConfigLocation</param-name>
             <param-value>me.frenchline.WebConfig</param-value>
         </init-param>
