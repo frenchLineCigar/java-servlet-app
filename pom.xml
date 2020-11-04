@@ -33,6 +33,12 @@
       <version>4.0.1</version>
       <scope>provided</scope> <!-- 이 javax.servlet-api 는 어디선가 `제공되는` 의존성 임을 명시(앱을 운영하는 컨테이너에서 제공된다), 프로젝트 패키징 시점에는 제외된다-->
     </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-webmvc</artifactId>
+      <!-- 스프링 부트를 사용하는 것이 아니기 때문에 버전을 명시해야 함-->
+      <version>5.1.3.RELEASE</version>
+    </dependency>
   </dependencies>
 
   <build>

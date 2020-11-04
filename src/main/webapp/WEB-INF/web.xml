@@ -1,40 +1,52 @@
 <!DOCTYPE web-app PUBLIC
- "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
+        "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+        "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-  <display-name>Archetype Created Web Application</display-name>
+    <display-name>Archetype Created Web Application</display-name>
 
-  <!-- 서블릿 필터 등록 -->
-  <filter>
-    <filter-name>myFilter</filter-name>
-    <filter-class>me.frenchline.MyFilter</filter-class>
-  </filter>
+    <!-- contextClass : ContextLoaderListener가 만들어 줄 애플리케이션 컨텍스트의 타입 지정 -->
+    <context-param>
+        <param-name>contextClass</param-name>
+        <param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
+    </context-param>
 
-  <!-- 서블릿 필터 매핑 -->
-  <filter-mapping>
-    <filter-name>myFilter</filter-name>
-    <servlet-name>HelloServlet</servlet-name>
-  </filter-mapping>
+    <!-- contextConfigLocation : 컨텍스트 설정파일(자바 or XML)의 위치 지정  -->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>me.frenchline.AppConfig</param-value>
+    </context-param>
 
-  <!-- 서블릿 리스너 등록 : 서블릿 컨텍스트 수준의 이벤트 리스너 -->
-  <listener>
-    <listener-class>me.frenchline.MyListener</listener-class>
-  </listener>
+    <!-- 서블릿 필터 등록 -->
+    <filter>
+        <filter-name>myFilter</filter-name>
+        <filter-class>me.frenchline.MyFilter</filter-class>
+    </filter>
 
-  <!-- 서블릿 등록 -->
-  <servlet>
-    <!-- 서블릿 이름 지정-->
-    <servlet-name>HelloServlet</servlet-name>
-    <!-- 서블릿 위치 -->
-    <servlet-class>me.frenchline.HelloServlet</servlet-class>
-  </servlet>
+    <!-- 서블릿 필터 매핑 -->
+    <filter-mapping>
+        <filter-name>myFilter</filter-name>
+        <servlet-name>HelloServlet</servlet-name>
+    </filter-mapping>
 
-  <!-- 서블릿 매핑 -->
-  <servlet-mapping>
-    <!-- hello 라는 이름의 서블릿을 지정한 url 패턴으로 매핑 -->
-    <servlet-name>HelloServlet</servlet-name>
-    <url-pattern>/hello</url-pattern>
-  </servlet-mapping>
+    <!-- 서블릿 리스너 등록 : 스프링이 제공해주는 ContextLoaderListener -->
+    <listener>
+      <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+    <!-- 서블릿 등록 -->
+    <servlet>
+        <!-- 서블릿 이름 지정-->
+        <servlet-name>HelloServlet</servlet-name>
+        <!-- 서블릿 위치 -->
+        <servlet-class>me.frenchline.HelloServlet</servlet-class>
+    </servlet>
+
+    <!-- 서블릿 매핑 -->
+    <servlet-mapping>
+        <!-- hello 라는 이름의 서블릿을 지정한 url 패턴으로 매핑 -->
+        <servlet-name>HelloServlet</servlet-name>
+        <url-pattern>/hello</url-pattern>
+    </servlet-mapping>
 
 </web-app>
