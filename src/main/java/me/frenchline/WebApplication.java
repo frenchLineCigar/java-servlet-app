@@ -23,9 +23,10 @@ public class WebApplication implements WebApplicationInitializer {
     public void onStartup(ServletContext servletContext) throws ServletException { //onStartup 메서드 블록 내에서 서블릿을 만들어서 등록한다
         // 1.Applcation Context 만들기
         AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
+        context.setServletContext(servletContext); // @EnableWebMvc 사용 시 Application Context에 Servlet Context를 설정해야 한다
         context.register(WebConfig.class); //빈 설정 파일 등록 : 설정으로 사용할 클래스를 빈으로 등록
         context.refresh(); //이 Applcation Context 를 갱신
-        
+
         // 2. DispatcherServlet 만들기
         DispatcherServlet dispatcherServlet = new DispatcherServlet(context); //DispatcherServlet를 만들때 Application Context를 준다
         // 3. DispatcherServlet 등록
